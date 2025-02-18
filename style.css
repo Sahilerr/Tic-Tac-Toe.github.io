@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #593F62;
+    text-align: center;
+}
+
+.container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.game {
+    height: 60vmin;
+    width: 60vmin;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5vmin;
+    position: relative;
+}
+
+/* Box design */
+.box {
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    font-size: 11vmin;
+    background-color: #7067CF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow 0.3s ease, transform 0.1s ease;
+}
+
+/* Box shadow appears after clicking */
+.box.clicked {
+    box-shadow: 0 0 1rem #af10b2;
+    transform: scale(0.95);
+}
+
+/* 'O' is blue and 'X' is red */
+.box[data-value="O"] {
+    color: #0000FF; /* Blue */
+}
+
+.box[data-value="X"] {
+    color: #FF0000; /* Red */
+}
+
+/* Winning yellow line - Appears over everything */
+#line {
+    position: absolute;
+    height: 5px;
+    width: 10px;
+    background-color: yellow;
+    transform-origin: left center;
+    transition: width 0.8s ease-in-out, transform 0.1s ease-in-out;
+    z-index: 10; /* Ensures line appears above everything */
+    pointer-events: none;
+    width: 0; 
+    border-radius: 5px;
+}
+
+#msgcontainer.hide {
+    display: none;
+}
+
+#msgcontainer:not(.hide) {
+    display: block;
+}
+
+#msgcontainer {
+    position: absolute; /* Take the message container out of the normal flow */
+    top: 50%; /* Position it vertically in the middle */
+    left: 50%; /* Position it horizontally in the middle */
+    transform: translate(-50%, -50%); /* Center it precisely */
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    z-index: 20; /* Ensure it appears above other elements */
+    background-color: rgba(0, 0, 0, 0.8); /* Add a background for better visibility */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+
+#reset {
+    margin-top: 25px;
+    padding: 1rem;
+    font-size: 2rem;
+    background-color: aquamarine;
+    color: #593F62;
+    border-radius: 5rem;
+    border: none;
+    cursor: pointer;
+    position: relative; /* Ensure it stays in place */
+    z-index: 10; /* Ensure it appears above the game board */
+}
+
+
+#msg {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px;
+}
